@@ -37,10 +37,8 @@ sudo fedora-third-party enable
 sudo flatpak remote-modify --disable fedora
 
 # Disable redundant and unnecessary repositories
-sudo dnf copr disable copr.fedorainfracloud.org/phracek/PyCharm
-echo
-sudo sed -i 's|enabled=1|enabled=0|g' "/etc/yum.repos.d/rpmfusion-nonfree-steam.repo"
-sudo sed -i 's|enabled=1|enabled=0|g' "/etc/yum.repos.d/rpmfusion-nonfree-nvidia-driver.repo"
+sudo dnf config-manager setopt rpmfusion-nonfree-nvidia-driver.enabled=0
+sudo dnf config-manager setopt rpmfusion-nonfree-steam.enabled=0
 
 # Add RPMFusion repositories
 dnf-manager install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
