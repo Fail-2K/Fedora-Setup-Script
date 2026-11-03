@@ -87,7 +87,9 @@ if [ -n "$amd_gpu" ]
 then
 	# Install mesa Hardware Accelerated Codec
 	dnf-manager install mesa-va-drivers-freeworld
+	dnf-manager swap mesa-vulkan-drivers{,-freeworld}
 	dnf-manager install mesa-va-drivers-freeworld.i686
+	dnf-manager swap mesa-vulkan-drivers{,-freeworld}.i686
 
 	# Install ROCm runtime (Use mesa-libOpenCL if your hardware is not supported: https://fedoraproject.org/wiki/SIGs/HC#HW_Support)
 	dnf-manager install rocm-hip rocm-opencl
